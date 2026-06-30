@@ -683,8 +683,11 @@ function renderProducts(){
       </div>
       <div class="prod-body" id="prod-body-${i}">
         <div class="grid2" style="margin-bottom:1rem;">
-          <div class="field"><label class="f-label">Ürün Adı</label><input class="f-input" value="${p.name}" oninput="data.products[${i}].name=this.value;dirty();updateProdHead(${i})"></div>
-          <div class="field"><label class="f-label">Kategori</label><input class="f-input" value="${p.cat}" oninput="data.products[${i}].cat=this.value;dirty();updateProdHead(${i})"></div>
+          <div class="field"><label class="f-label">Ürün Adı</label><input class="f-input" value="${p.name}" oninput="data.products[${i}].name=this.value;dirty();"></div>
+          <div class="field"><label class="f-label">Kategori</label>
+<select class="f-select" onchange="data.products[${i}].cat=this.value;dirty();">
+${['Yemek Odası','Oturma Odası','Yatak Odası','Depolama','Kitaplık','Ofis','Banyo','Çocuk Odası','Özel Tasarım'].map(c=>`<option value="${c}" ${p.cat===c?'selected':''}>${c}</option>`).join('')}
+</select></div>
         </div>
         <div class="field"><label class="f-label">Detay (malzeme, ölçü vb.)</label><input class="f-input" value="${p.detail}" oninput="data.products[${i}].detail=this.value;dirty()"></div>
         <div class="field">
@@ -711,7 +714,9 @@ function toggleProd(i){
 }
 
 function updateProdHead(i){
-  setTimeout(()=>renderProducts(),0);
+  // Don't re-render while typing - just update the display name
+  const nameEl = document.querySelector('#prod-body-'+i+' input:first-of-type');
+  // Update stored data only
 }
 
 function addProduct(){
