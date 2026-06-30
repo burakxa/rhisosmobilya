@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rhisos Mobilya – El yapımı, masif ahşap mobilya atölyesi. İstanbul.">
+<title>Rhisos Mobilya | El Yapımı Ahşap Mobilya</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --oak: #8B6B47;
+    --oak-dark: #5C4530;
+    --oak-light: #C4A882;
+    --cream: #F7F3ED;
+    --warm-white: #FDFAF6;
+    --charcoal: #2C2520;
+    --mid: #6B5B4E;
+    --soft: #A89880;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(253,250,246,0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139,107,71,0.12);
+    transition: padding 0.3s;
+  }
+
+  nav.scrolled { padding: 0.9rem 4rem; }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    color: var(--oak-dark);
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .logo span { color: var(--oak); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.73rem;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    color: var(--mid);
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--oak); }
+
+  .nav-cta {
+    color: var(--warm-white) !important;
+    background: var(--oak-dark);
+    padding: 0.6rem 1.5rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--oak) !important; color: var(--warm-white) !important; }
+
+  .burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .burger span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--oak-dark);
+    transition: 0.3s;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5rem 4rem 5rem 4rem;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--oak);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 2rem;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--oak);
+  }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    color: var(--mid);
+    max-width: 380px;
+    line-height: 1.9;
+    margin-bottom: 2.8rem;
+  }
+
+  .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--oak-dark);
+    color: var(--warm-white);
+    padding: 0.9rem 2.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.73rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--oak-dark);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+  }
+  .btn-primary:hover { background: var(--oak); border-color: var(--oak); }
+
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--oak-dark);
+    padding: 0.9rem 2.4rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.73rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid var(--oak-dark);
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+  }
+  .btn-outline:hover { background: var(--oak-dark); color: var(--warm-white); }
+
+  .insta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    color: var(--soft);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .insta-link:hover { color: var(--oak); }
+  .insta-link svg { width: 15px; height: 15px; }
+
+  .hero-visual {
+    position: relative;
+    background: var(--cream);
+    overflow: hidden;
+  }
+  .hero-visual svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-badge {
+    position: absolute;
+    bottom: 3rem;
+    left: 2.5rem;
+    background: var(--warm-white);
+    padding: 1.4rem 1.8rem;
+    border-left: 3px solid var(--oak);
+  }
+  .hero-badge .num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem;
+    font-weight: 300;
+    color: var(--oak-dark);
+    line-height: 1;
+  }
+  .hero-badge .lbl {
+    font-size: 0.67rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 0.3rem;
+  }
+
+  /* ── STRIP ── */
+  .strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem 3.5rem;
+    padding: 1.8rem 4rem;
+    background: var(--charcoal);
+  }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--oak-light);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .strip-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: var(--oak);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTION COMMON ── */
+  .section { padding: 7rem 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(139,107,71,0.15);
+  }
+
+  .section-label {
+    font-size: 0.67rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--oak);
+    margin-bottom: 0.8rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+  }
+
+  .section-link {
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--oak);
+    text-decoration: none;
+    border-bottom: 1px solid var(--oak-light);
+    padding-bottom: 2px;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .section-link:hover { color: var(--oak-dark); border-color: var(--oak-dark); }
+
+  /* ── PRODUCTS ── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: var(--cream);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  .product-card:hover { transform: translateY(-4px); }
+  .product-card.featured { grid-row: span 2; }
+
+  .product-img { width: 100%; overflow: hidden; }
+  .product-img svg { width: 100%; display: block; transition: transform 0.5s ease; }
+  .product-card:hover .product-img svg { transform: scale(1.04); }
+
+  .product-info { padding: 1.3rem 1.4rem 1.6rem; }
+  .product-cat {
+    font-size: 0.64rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--oak);
+    margin-bottom: 0.4rem;
+  }
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.3rem;
+  }
+  .product-detail { font-size: 0.77rem; color: var(--soft); }
+
+  /* ── CRAFT ── */
+  .craft {
+    padding: 7rem 4rem;
+    background: var(--charcoal);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: center;
+  }
+  .craft .section-label { color: var(--oak-light); }
+  .craft .section-title { color: var(--warm-white); }
+
+  .craft-desc {
+    font-size: 0.88rem;
+    color: var(--oak-light);
+    line-height: 2;
+    margin: 1.5rem 0 2.5rem;
+    max-width: 420px;
+  }
+
+  .craft-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgba(196,168,130,0.2);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--oak-light);
+    line-height: 1;
+  }
+  .stat-lbl {
+    font-size: 0.67rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--soft);
+    margin-top: 0.4rem;
+  }
+
+  .craft-visual svg { width: 100%; display: block; }
+
+  /* ── PROCESS ── */
+  .process { padding: 7rem 4rem; background: var(--cream); }
+  .process .section-header { border-color: rgba(139,107,71,0.15); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+
+  .step {
+    padding: 2rem 1.8rem 2.2rem;
+    background: var(--warm-white);
+    border-top: 2px solid var(--oak);
+  }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(139,107,71,0.2);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+  }
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--charcoal);
+    margin-bottom: 0.7rem;
+  }
+  .step-desc { font-size: 0.8rem; color: var(--mid); line-height: 1.8; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { padding: 7rem 4rem; text-align: center; }
+  .testimonials .section-label { text-align: center; }
+  .testimonials .section-title { text-align: center; margin-bottom: 4rem; }
+
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: left;
+  }
+
+  .testimonial-card {
+    background: var(--cream);
+    padding: 2.2rem;
+    border-top: 2px solid var(--oak);
+  }
+  .t-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--charcoal);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+  .t-author {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--oak);
+  }
+  .t-loc { font-size: 0.69rem; color: var(--soft); margin-top: 0.25rem; }
+
+  /* ── CONTACT ── */
+  .contact {
+    padding: 7rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7rem;
+    align-items: start;
+  }
+
+  .contact-desc {
+    font-size: 0.88rem;
+    color: var(--mid);
+    line-height: 1.9;
+    margin: 1.5rem 0 2.5rem;
+  }
+
+  .contact-info { display: flex; flex-direction: column; gap: 1.1rem; }
+  .contact-item { display: flex; align-items: center; gap: 1rem; font-size: 0.83rem; color: var(--mid); }
+  .contact-icon {
+    width: 38px; height: 38px;
+    background: var(--cream);
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid rgba(139,107,71,0.2);
+    flex-shrink: 0;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.3rem; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+  .form-group label {
+    font-size: 0.67rem;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    color: var(--mid);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--cream);
+    border: 1px solid rgba(139,107,71,0.22);
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.83rem;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--oak); }
+  .form-group textarea { resize: vertical; min-height: 130px; }
+
+  .form-success {
+    display: none;
+    background: rgba(139,107,71,0.1);
+    border-left: 3px solid var(--oak);
+    padding: 1rem 1.25rem;
+    font-size: 0.83rem;
+    color: var(--oak-dark);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--charcoal);
+    padding: 3.5rem 4rem;
+  }
+  .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(196,168,130,0.15);
+    margin-bottom: 2rem;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--oak-light);
+  }
+  .footer-links { display: flex; gap: 2.5rem; list-style: none; }
+  .footer-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--oak-light); }
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-copy { font-size: 0.7rem; color: var(--soft); }
+  .footer-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--soft);
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .footer-insta:hover { color: var(--oak-light); }
+  .footer-insta svg { width: 14px; height: 14px; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.1rem 1.5rem; }
+    nav.scrolled { padding: 0.85rem 1.5rem; }
+    .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--warm-white); flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; z-index: 300; }
+    .nav-links.open { display: flex; }
+    .nav-cta { padding: 0.8rem 2rem !important; }
+    .burger { display: flex; z-index: 400; }
+
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-text { padding: 3rem 1.5rem 2.5rem; }
+    .hero-visual { min-height: 380px; }
+
+    .strip { padding: 1.5rem; gap: 1rem 2rem; }
+
+    .section { padding: 4.5rem 1.5rem; }
+
+    .products-grid { grid-template-columns: 1fr; }
+    .product-card.featured { grid-row: span 1; }
+
+    .craft { grid-template-columns: 1fr; padding: 4.5rem 1.5rem; gap: 3rem; }
+    .craft-visual { display: none; }
+
+    .process-steps { grid-template-columns: 1fr 1fr; }
+
+    .testimonial-grid { grid-template-columns: 1fr; }
+
+    .contact { grid-template-columns: 1fr; padding: 4.5rem 1.5rem; gap: 3rem; }
+
+    .section-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+
+    footer { padding: 2.5rem 1.5rem; }
+    .footer-top { flex-direction: column; gap: 1.5rem; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+
+    .form-row { grid-template-columns: 1fr; }
+    .craft-stats { gap: 2rem; }
+    .btn-row { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 480px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#" class="logo">Rhisos <span>Mobilya</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#urunler" onclick="closeMenu()">Ürünler</a></li>
+    <li><a href="#atolye" onclick="closeMenu()">Atölye</a></li>
+    <li><a href="#surec" onclick="closeMenu()">Süreç</a></li>
+    <li><a href="#iletisim" onclick="closeMenu()">İletişim</a></li>
+    <li><a href="#iletisim" class="nav-cta" onclick="closeMenu()">Teklif Al</a></li>
+  </ul>
+  <button class="burger" id="burger" onclick="toggleMenu()" aria-label="Menü">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="ana-sayfa">
+  <div class="hero-text">
+    <p class="eyebrow">El yapımı · Sipariş üzeri · İstanbul</p>
+    <h1 class="hero-title">
+      Ağaçtan<br>
+      <em>Anlam</em><br>
+      Doğar
+    </h1>
+    <p class="hero-sub">Her parça, ahşabın kendi sesini duyduğumuz bir atölyede; tek tek, elinizle dokunularak yapılır.</p>
+    <div class="btn-row">
+      <a href="#urunler" class="btn-primary">Koleksiyonu İncele</a>
+      <a href="#atolye" class="btn-outline">Atölyemiz</a>
+    </div>
+    <a href="https://www.instagram.com/rhisosmobilya/" target="_blank" rel="noopener" class="insta-link">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      @rhisosmobilya
+    </a>
+  </div>
+
+  <div class="hero-visual">
+    <svg viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="600" height="800" fill="#C4A882"/>
+      <g stroke="#8B6B47" stroke-width="1.2" opacity="0.3" fill="none">
+        <path d="M0,100 Q150,88 300,105 Q450,122 600,100"/>
+        <path d="M0,170 Q140,158 295,175 Q448,192 600,170"/>
+        <path d="M0,250 Q160,237 300,255 Q445,273 600,250"/>
+        <path d="M0,340 Q145,327 298,345 Q448,362 600,340"/>
+        <path d="M0,440 Q155,427 300,445 Q448,462 600,440"/>
+        <path d="M0,550 Q148,537 298,555 Q445,572 600,550"/>
+        <path d="M0,660 Q152,647 300,665 Q450,682 600,660"/>
+        <path d="M0,760 Q148,747 298,765 Q448,782 600,760"/>
+      </g>
+      <g stroke="#5C4530" stroke-width="0.6" opacity="0.18" fill="none">
+        <path d="M0,130 Q165,118 300,135 Q440,152 600,130"/>
+        <path d="M0,210 Q158,198 298,215 Q440,232 600,210"/>
+        <path d="M0,295 Q152,282 298,300 Q444,317 600,295"/>
+        <path d="M0,390 Q155,378 298,395 Q446,412 600,390"/>
+        <path d="M0,495 Q150,483 298,500 Q446,517 600,495"/>
+        <path d="M0,605 Q153,593 298,610 Q448,627 600,605"/>
+        <path d="M0,710 Q150,698 298,715 Q448,732 600,710"/>
+      </g>
+      <!-- Chair silhouette -->
+      <g fill="#3C2B18" opacity="0.16">
+        <rect x="180" y="220" width="240" height="14" rx="2"/>
+        <rect x="175" y="232" width="250" height="190" rx="3"/>
+        <rect x="188" y="422" width="20" height="170" rx="4"/>
+        <rect x="392" y="422" width="20" height="170" rx="4"/>
+        <rect x="208" y="510" width="20" height="82" rx="4"/>
+        <rect x="372" y="510" width="20" height="82" rx="4"/>
+      </g>
+      <rect width="600" height="200" fill="white" opacity="0.05"/>
+      <rect width="600" height="800" fill="#7A5C38" opacity="0.04"/>
+    </svg>
+    <div class="hero-badge">
+      <div class="num">15+</div>
+      <div class="lbl">Yıllık Deneyim</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STRIP ── -->
+<div class="strip">
+  <div class="strip-item"><span class="strip-dot"></span> Masif Ahşap</div>
+  <div class="strip-item"><span class="strip-dot"></span> El Dokuması Detaylar</div>
+  <div class="strip-item"><span class="strip-dot"></span> Sipariş Üzerine Üretim</div>
+  <div class="strip-item"><span class="strip-dot"></span> Yerli Ham Madde</div>
+  <div class="strip-item"><span class="strip-dot"></span> Ömür Boyu Dayanıklılık</div>
+</div>
+
+<!-- ── PRODUCTS ── -->
+<section class="section" id="urunler">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Koleksiyon</p>
+      <h2 class="section-title">Seçili Eserler</h2>
+    </div>
+    <a href="https://www.instagram.com/rhisosmobilya/" target="_blank" rel="noopener" class="section-link">Tümünü Gör →</a>
+  </div>
+
+  <div class="products-grid">
+    <div class="product-card featured">
+      <div class="product-img">
+        <svg viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+          <rect width="400" height="600" fill="#D4B896"/>
+          <g stroke="#8B6B47" stroke-width="0.9" opacity="0.38" fill="none">
+            <path d="M0,80 Q100,72 200,85 Q300,98 400,80"/>
+            <path d="M0,160 Q110,150 205,163 Q305,176 400,158"/>
+            <path d="M0,250 Q95,240 200,253 Q298,266 400,248"/>
+            <path d="M0,350 Q108,340 202,353 Q300,366 400,348"/>
+            <path d="M0,460 Q100,450 200,463 Q302,476 400,458"/>
+            <path d="M0,545 Q105,535 200,548 Q300,561 400,543"/>
+          </g>
+          <g fill="#5C4530" opacity="0.2">
+            <rect x="60" y="210" width="280" height="20" rx="3"/>
+            <rect x="75" y="228" width="22" height="220" rx="3"/>
+            <rect x="303" y="228" width="22" height="220" rx="3"/>
+            <rect x="60" y="436" width="280" height="14" rx="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="product-info">
+        <p class="product-cat">Yemek Odası</p>
+        <p class="product-name">Toros Yemek Masası</p>
+        <p class="product-detail">Meşe · 220 × 100 cm · El zımpara</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="300" fill="#C8A87A"/>
+          <g stroke="#7A5C38" stroke-width="0.7" opacity="0.4" fill="none">
+            <path d="M0,55 Q75,47 150,57 Q225,67 300,55"/>
+            <path d="M0,115 Q78,107 150,117 Q226,127 300,115"/>
+            <path d="M0,185 Q73,177 150,187 Q224,197 300,185"/>
+            <path d="M0,255 Q76,247 150,257 Q227,267 300,255"/>
+          </g>
+          <g fill="#4A3020" opacity="0.2">
+            <rect x="100" y="60" width="100" height="8" rx="2"/>
+            <rect x="95" y="66" width="110" height="140" rx="2"/>
+            <rect x="108" y="206" width="10" height="70" rx="2"/>
+            <rect x="182" y="206" width="10" height="70" rx="2"/>
+            <rect x="115" y="250" width="10" height="26" rx="2"/>
+            <rect x="175" y="250" width="10" height="26" rx="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="product-info">
+        <p class="product-cat">Oturma Odası</p>
+        <p class="product-name">Kiraz Berjer</p>
+        <p class="product-detail">Kiraz ağacı · El oyması</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="300" fill="#B8956A"/>
+          <g stroke="#7A5C38" stroke-width="0.7" opacity="0.35" fill="none">
+            <path d="M0,55 Q75,47 150,57 Q225,67 300,55"/>
+            <path d="M0,115 Q79,107 150,117 Q226,127 300,115"/>
+            <path d="M0,185 Q74,177 150,187 Q225,197 300,185"/>
+            <path d="M0,255 Q76,247 150,257 Q227,267 300,255"/>
+          </g>
+          <g fill="#4A3020" opacity="0.22">
+            <rect x="45" y="55" width="210" height="14" rx="2"/>
+            <rect x="52" y="69" width="30" height="200" rx="2"/>
+            <rect x="218" y="69" width="30" height="200" rx="2"/>
+            <rect x="52" y="150" width="196" height="10" rx="2"/>
+            <rect x="52" y="220" width="196" height="10" rx="2"/>
+          </g>
+        </svg>
+      </div>
+      <div class="product-info">
+        <p class="product-cat">Depolama</p>
+        <p class="product-name">Ege Kitaplık</p>
+        <p class="product-detail">Ceviz · 180 × 220 cm</p>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="300" fill="#D4AE80"/>
+          <g stroke="#9A7248" stroke-width="0.7" opacity="0.38" fill="none">
+            <path d="M0,60 Q75,52 150,62 Q225,72 300,60"/>
+            <path d="M0,125 Q79,117 150,127 Q226,137 300,125"/>
+            <path d="M0,200 Q74,192 150,202 Q225,212 300,200"/>
+            <path d="M0,270 Q77,262 150,272 Q226,282 300,270"/>
+          </g>
+          <g fill="#4A3020" opacity="0.2">
+            <ellipse cx="150" cy="130" rx="100" ry="14"/>
+            <rect x="120" y="142" width="14" height="130" rx="3"/>
+            <rect x="166" y="142" width="14" height="130" rx="3"/>
+            <ellipse cx="150" cy="128" rx="100" ry="14"/>
+          </g>
+        </svg>
+      </div>
+      <div class="product-info">
+        <p class="product-cat">Yatak Odası</p>
+        <p class="product-name">Anadolu Komodin</p>
+        <p class="product-detail">Meşe · Çift parça</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CRAFT ── -->
+<section class="craft" id="atolye">
+  <div class="craft-text">
+    <p class="section-label">Zanaatkârlık</p>
+    <h2 class="section-title">Her Çivi,<br>Her Zımpara İzi<br><em style="font-style: italic; color: #C4A882;">Kasıtlıdır</em></h2>
+    <p class="craft-desc">Rhisos Mobilya olarak endüstriyel üretimden değil, atölyeden geliyoruz. Her parçayı, o parçanın gerektirdiği zamanda tamamlarız. Ham maddeyi doğrudan orman işletmelerinden seçer, kurutma sürecini kendimiz yönetiriz.</p>
+    <a href="#iletisim" class="btn-primary">Atölyeyi Ziyaret Et</a>
+    <div class="craft-stats">
+      <div><div class="stat-num">800+</div><div class="stat-lbl">Teslim Edilen Proje</div></div>
+      <div><div class="stat-num">15+</div><div class="stat-lbl">Yıllık Deneyim</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-lbl">Doğal Malzeme</div></div>
+    </div>
+  </div>
+
+  <div class="craft-visual">
+    <svg viewBox="0 0 500 580" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="580" fill="#3D2E1E"/>
+      <g stroke="#8B6B47" stroke-width="1.2" opacity="0.45">
+        <line x1="55" y1="0" x2="55" y2="580"/>
+        <line x1="155" y1="0" x2="155" y2="580"/>
+        <line x1="265" y1="0" x2="265" y2="580"/>
+        <line x1="385" y1="0" x2="385" y2="580"/>
+        <line x1="460" y1="0" x2="460" y2="580"/>
+      </g>
+      <g stroke="#C4A882" stroke-width="0.5" opacity="0.15">
+        <line x1="0" y1="110" x2="500" y2="110"/>
+        <line x1="0" y1="240" x2="500" y2="240"/>
+        <line x1="0" y1="370" x2="500" y2="370"/>
+        <line x1="0" y1="490" x2="500" y2="490"/>
+      </g>
+      <rect x="40" y="268" width="420" height="22" fill="#8B6B47" opacity="0.55" rx="2"/>
+      <rect x="60" y="288" width="26" height="180" fill="#6B4E30" opacity="0.5" rx="2"/>
+      <rect x="414" y="288" width="26" height="180" fill="#6B4E30" opacity="0.5" rx="2"/>
+      <rect x="80" y="228" width="340" height="42" fill="#A07840" opacity="0.45" rx="2"/>
+      <g stroke="#7A5C30" stroke-width="0.9" opacity="0.55" fill="none">
+        <path d="M80,246 Q170,241 260,249 Q340,255 420,246"/>
+        <path d="M80,258 Q165,253 255,261 Q338,267 420,259"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ── PROCESS ── -->
+<section class="process" id="surec">
+  <div class="section-header">
+    <div>
+      <p class="section-label">Nasıl Çalışırız</p>
+      <h2 class="section-title">Sipariş'ten<br>Teslimat'a</h2>
+    </div>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">İlk Görüşme</div>
+      <p class="step-desc">Atölyemizde buluşur, ahşap örneklerine dokunur ve projenizi birlikte dinleriz. Ölçüler, malzeme, renk tercihlerini konuşuruz.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Tasarım & Teklif</div>
+      <p class="step-desc">Görüşmenizden sonra teknik çizim ve detaylı fiyat teklifi hazırlarız. Onayınızla üretime başlarız.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">El Yapımı Üretim</div>
+      <p class="step-desc">Her parça, masif ahşabı seçmekten son yüzeye kadar ustalarımızın elinden geçer. Süreç görüntülü paylaşılır.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Teslim & Montaj</div>
+      <p class="step-desc">Evinize ya da işyerinize bizzat teslim eder, montajını yapar ve memnuniyetinizi yerinde teyit ederiz.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <p class="section-label">Müşteri Deneyimleri</p>
+  <h2 class="section-title">Onlar Anlatsın</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p class="t-quote">"Sipariş verdiğimizden itibaren her adımda bizimle ilgilendiler. Yemek masamız bir yıldır ailemizin en sevdiği köşe."</p>
+      <p class="t-author">Zeynep & Murat K.</p>
+      <p class="t-loc">Kadıköy, İstanbul</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="t-quote">"Ofisimiz için on iki adet çalışma masası aldık. Kalite tutarlılığı ve zamanında teslim için teşekkürler — tekrar çalışacağız."</p>
+      <p class="t-author">Emre T.</p>
+      <p class="t-loc">Levent, İstanbul</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="t-quote">"Tasarım sürecinde boyutları ve ahşabı birlikte seçtik. Evin duvarlarına bakıp mobilyaya bakınca ikisi sanki birlikte planlanmış gibi."</p>
+      <p class="t-author">Ayşe B.</p>
+      <p class="t-loc">Beşiktaş, İstanbul</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact" id="iletisim">
+  <div class="contact-text">
+    <p class="section-label">İletişim</p>
+    <h2 class="section-title">Projenizi<br>Konuşalım</h2>
+    <p class="contact-desc">Sipariş öncesi atölyemize gelin, ahşap örneklerimize dokunun ve ürününüzü birlikte tasarlayalım. Yüz yüze görüşmeyi tercih ederiz.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="1.5">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <span>İstanbul — atölye adresi için DM atın</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#8B6B47" stroke="none"/>
+          </svg>
+        </div>
+        <a href="https://www.instagram.com/rhisosmobilya/" target="_blank" rel="noopener" style="color: var(--mid); text-decoration: none;">@rhisosmobilya</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8B6B47" stroke-width="1.5">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <span>Pazartesi – Cumartesi, 09:00 – 18:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form">
+    <div id="formSuccess" class="form-success">
+      Mesajınız alındı. En kısa sürede sizinle iletişime geçeceğiz.
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Ad Soyad</label>
+        <input type="text" id="name" placeholder="İsminiz">
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefon</label>
+        <input type="tel" id="phone" placeholder="05XX XXX XX XX">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="category">Ürün Kategorisi</label>
+      <select id="category">
+        <option value="">Seçiniz…</option>
+        <option>Yemek Masası & Sandalye</option>
+        <option>Oturma Odası</option>
+        <option>Yatak Odası</option>
+        <option>Depolama & Kitaplık</option>
+        <option>Ofis Mobilyası</option>
+        <option>Özel Proje</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="message">Projenizi Anlatın</label>
+      <textarea id="message" placeholder="Boyutlar, malzeme tercihleri, kullanım amacı…"></textarea>
+    </div>
+    <button class="btn-primary" onclick="submitForm()" style="border: none; cursor: pointer;">Teklif Talep Et →</button>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-logo">Rhisos Mobilya</div>
+    <ul class="footer-links">
+      <li><a href="#urunler">Ürünler</a></li>
+      <li><a href="#atolye">Atölye</a></li>
+      <li><a href="#surec">Süreç</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Rhisos Mobilya — Tüm hakları saklıdır.</p>
+    <a href="https://www.instagram.com/rhisosmobilya/" target="_blank" rel="noopener" class="footer-insta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+      Instagram
+    </a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  function closeMenu() {
+    document.getElementById('navLinks').classList.remove('open');
+  }
+
+  // Form submit
+  function submitForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('message').value.trim();
+    if (!name || !phone) {
+      alert('Lütfen ad soyad ve telefon numaranızı girin.');
+      return;
+    }
+    const successEl = document.getElementById('formSuccess');
+    successEl.style.display = 'block';
+    document.getElementById('name').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('category').value = '';
+    document.getElementById('message').value = '';
+    successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
