@@ -260,6 +260,7 @@ body{font-family:'Inter',sans-serif;background:#0a0a0a;color:#ccc;min-height:100
         <div class="sb-status"><span class="sb-dot" id="sdot"></span><span id="sstatus">Yükleniyor...</span></div>
         <button class="sb-save" onclick="saveAll()">💾 Kaydet</button>
         <button class="sb-deploy" id="deploy-btn" onclick="deploy()">🚀 Siteyi Yayınla</button>
+        <button class="sb-save" style="background:#1a2a3a;color:#7aaacc;border:1px solid #2a3a4a;" onclick="exportSite()">⬇ Dosyayı İndir</button>
         <button class="sb-logout" onclick="logout()">← Çıkış Yap</button>
       </div>
     </aside>
@@ -926,10 +927,10 @@ async function deploy(){
   try{
     saveAll();
     const html=buildSite();
-    const fd=new FormData();
-    fd.append('files',new Blob([html],{type:'text/html'}),'index.html');
-    const res=await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}/pages/projects/rhisosmobilya/deployments`,{
-      method:'POST',headers:{'Authorization':`Bearer ${token}`},body:fd
+    const res=await fetch('https://polished-dawn-5a8a.burakcanbrn.workers.dev/',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({token,account,html})
     });
     const json=await res.json();
     if(json.success){
@@ -1334,6 +1335,17 @@ document.querySelectorAll('.pc,.tc,.ps,.gi').forEach(el=>{el.style.opacity='0';e
 }
 
 // ══════════════════════════════════
+function exportSite(){
+  saveAll();
+  const html = buildSite();
+  const blob = new Blob([html], {type:'text/html'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index.html';
+  a.click();
+  toast('index.html indirildi! GitHub'a yükleyin.');
+}
+
 // TOAST
 // ══════════════════════════════════
 function toast(msg){
