@@ -11,12 +11,12 @@
 html{scroll-behavior:smooth}
 :root{--bg:#1E1208;--bg2:#2A1A0E;--bg3:#321F10;--pb:#3B2410;--wood:#C4956A;--wl:#E8D5B0;--wd:#8B6B3D;--wx:#5C3D1E;--amber:#D4834A;--tx:#E8D5B0;--tm:#8B7355;--td:#5C4830;--br:rgba(196,149,106,0.18);--bm:rgba(196,149,106,0.32);}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0.9rem 3.5rem;background:rgba(30,18,8,0.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--br);transition:padding 0.3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;align-items:center;justify-content:space-between;padding:0.9rem 3.5rem;background:#1E1208;border-bottom:1px solid rgba(196,149,106,0.2);transition:padding 0.3s;min-height:66px;}
 nav.scrolled{padding:0.7rem 3.5rem;}
 .logo{display:flex;align-items:center;gap:0.7rem;text-decoration:none;flex-shrink:0;}
 .logo img{width:40px;height:40px;object-fit:contain;border-radius:50%;}
 .logo-text{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:300;letter-spacing:0.14em;text-transform:uppercase;color:var(--wl);}
-.nl{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nl{display:flex;align-items:center;gap:2rem;list-style:none;flex-wrap:nowrap;}
 .nl a{font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;text-decoration:none;color:var(--tm);transition:color 0.2s;}
 .nl a:hover{color:var(--wood);}
 .nc{color:var(--bg)!important;background:var(--wood)!important;padding:0.5rem 1.3rem;}
